@@ -3,393 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DarkMode Coffee - Your Evening Companion</title>
+    <title>DarkMode Coffee - Eksklusif & Elegan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
         
-        body {
-            font-family: 'Plus+Jakarta+Sans', sans-serif;
-            background-color: #F5E8DD;
+        :root {
+            --coffee-dark: #3C2A21;
+            --coffee-medium: #5F4435;
+            --coffee-accent: #D7C0AE;
+            --coffee-cream: #F5E8DD;
         }
 
-        .bg-coffee-dark { background-color: #3C2A21; }
-        .bg-coffee-medium { background-color: #5F4435; }
-        .text-coffee-dark { color: #3C2A21; }
-        .text-coffee-light { color: #D5B4B4; }
-        .border-coffee { border-color: #D5B4B4; }
-        
-        .hero-gradient {
-            background: linear-gradient(to right, #F5E8DD 50%, #D7C0AE 50%);
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--coffee-cream);
+            color: var(--coffee-dark);
+        }
+
+        .hero-section {
+            background: linear-gradient(to right, #F5E8DD 40%, #D7C0AE 40%);
+        }
+
+        .wide-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .menu-card:hover {
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
+        .image-reveal {
+            border-radius: 200px 200px 0 0;
+            overflow: hidden;
+            border: 12px solid white;
+        }
+
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #F5E8DD; }
-        ::-webkit-scrollbar-thumb { background: #3C2A21; border-radius: 10px; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--coffee-cream); }
+        ::-webkit-scrollbar-thumb { background: var(--coffee-dark); border-radius: 5px; }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- Navigation -->
-    <nav class="flex items-center justify-between px-6 py-4 md:px-16 absolute w-full z-50">
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-coffee-dark rounded-full flex items-center justify-center">
-                <i class="fas fa-coffee text-white text-xs"></i>
+    <!-- Navigasi -->
+    <nav class="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-md border-b border-coffee-accent/20">
+        <div class="wide-container flex items-center justify-between px-6 py-5">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-coffee-dark rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-coffee text-white text-sm"></i>
+                </div>
+                <span class="font-extrabold text-coffee-dark tracking-tighter text-2xl uppercase">DarkMode</span>
             </div>
-            <span class="font-bold text-coffee-dark tracking-tighter text-xl">DarkMode</span>
+            <div class="hidden lg:flex items-center gap-12 text-xs font-bold uppercase tracking-widest text-coffee-dark/60">
+                <a href="#about" class="hover:text-coffee-dark transition-colors border-b-2 border-transparent hover:border-coffee-dark py-1">About Us</a>
+                <a href="#delivery" class="hover:text-coffee-dark transition-colors border-b-2 border-transparent hover:border-coffee-dark py-1">Delivery</a>
+                <a href="#menu" class="hover:text-coffee-dark transition-colors border-b-2 border-transparent hover:border-coffee-dark py-1">Menu</a>
+                <a href="#contact" class="hover:text-coffee-dark transition-colors border-b-2 border-transparent hover:border-coffee-dark py-1">Contact Us</a>
+            </div>
+            <button class="px-8 py-3 bg-coffee-dark text-white rounded-full text-xs font-bold hover:scale-105 active:scale-95 transition-all shadow-lg uppercase tracking-widest">
+                Order Now
+            </button>
         </div>
-        <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-coffee-dark/70">
-            <a href="#" class="text-coffee-dark border-b-2 border-coffee-dark">ABOUT US</a>
-            <a href="#" class="hover:text-coffee-dark transition">Delivery</a>
-            <a href="#" class="hover:text-coffee-dark transition">MENU</a>
-            <a href="#" class="hover:text-coffee-dark transition">CONTACT US</a>
-        </div>
-        <button class="px-6 py-2 border border-coffee-dark rounded-full text-xs font-bold hover:bg-coffee-dark hover:text-white transition">
-            Order
-        </button>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex flex-col md:flex-row items-center pt-20 px-6 md:px-16 hero-gradient">
-        <div class="w-full md:w-1/2 flex justify-center">
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1511202213190-67d966967f65?auto=format&fit=crop&w=600&q=80" alt="Barista" class="w-[300px] md:w-[450px] object-cover rounded-t-full border-8 border-white shadow-2xl">
-                <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-full shadow-lg">
-                    <span class="text-coffee-dark font-bold">Home</span>
+    <!-- Hero Section (Beranda) -->
+    <section class="hero-section min-h-screen flex items-center pt-24 pb-12">
+        <div class="wide-container flex flex-col lg:flex-row items-center px-6 w-full gap-12">
+            <!-- Gambar Kopi Hero -->
+            <div class="w-full lg:w-1/2 flex justify-center order-2 lg:order-1">
+                <div class="relative group">
+                    <div class="image-reveal w-[320px] md:w-[500px] aspect-[4/5] shadow-2xl relative z-10">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Kopi Estetik" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <!-- Aksesori Dekoratif -->
+                    <div class="absolute -bottom-6 -left-6 bg-white py-6 px-10 rounded-full shadow-2xl z-20 border-4 border-coffee-cream">
+                        <span class="text-coffee-dark font-black text-xl italic">Home Of Coffee</span>
+                    </div>
+                    <div class="absolute top-20 -right-10 w-32 h-32 bg-coffee-dark/10 rounded-full blur-3xl"></div>
                 </div>
             </div>
-        </div>
-        <div class="w-full md:w-1/2 mt-10 md:mt-0 md:pl-12">
-            <h1 class="text-4xl md:text-6xl font-bold text-coffee-dark leading-tight">
-                "From the finest coffee beans, it gives warmth in every sip"
-            </h1>
-            <p class="mt-6 text-coffee-dark/80 text-lg max-w-md">
-                Welcome to Dark Mode, your evening companion. ☕✨
-            </p>
-        </div>
-    </section>
-
-    <!-- About Us Section -->
-    <section class="bg-black text-white py-20 px-6 md:px-16 overflow-hidden relative">
-        <div class="flex flex-col md:flex-row gap-12 items-center">
-            <div class="w-full md:w-1/2 flex gap-4">
-                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=300&q=80" class="w-1/2 h-80 object-cover rounded-3xl" alt="Coffee Aesthetic">
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=300&q=80" class="w-1/2 h-80 object-cover rounded-3xl mt-12" alt="Latte Art">
-            </div>
-            <div class="w-full md:w-1/2">
-                <div class="flex items-center gap-2 mb-4">
-                    <i class="fas fa-mug-hot text-2xl"></i>
-                    <h2 class="text-3xl font-bold uppercase tracking-widest">About Us</h2>
-                </div>
-                <p class="text-gray-400 leading-relaxed mb-6">
-                    Behind the dark night, there is a cup of coffee that lights up. Dark Mode Coffee is here to accompany every moment with quality coffee blends from selected beans. We believe that coffee is not just a drink, but an experience—a blend of distinctive aromas, deep flavors, and a soothing atmosphere.
+            
+            <!-- Teks Hero -->
+            <div class="w-full lg:w-1/2 order-1 lg:order-2 space-y-8">
+                <div class="inline-block px-4 py-1 rounded-full bg-coffee-dark/5 border border-coffee-dark/10 text-xs font-bold uppercase tracking-[0.2em]">Premium Quality Beans</div>
+                <h1 class="text-5xl lg:text-7xl font-extrabold text-coffee-dark leading-[1.1] tracking-tight">
+                    "From the <span class="text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">finest</span> coffee beans, it gives warmth in every sip"
+                </h1>
+                <p class="text-xl text-coffee-dark/70 max-w-lg font-medium leading-relaxed">
+                    Selamat datang di Dark Mode, teman setia malam Anda. Nikmati harmoni rasa yang dikurasi khusus untuk pecinta kopi sejati.
                 </p>
-                <p class="text-gray-400 leading-relaxed mb-8">
-                    With the concept of dark & cozy, we create a comfortable space for coffee lovers and night owls. Enjoy the warm ambience under dim lights, accompanied by soothing music, and premium coffee made with care.
-                </p>
-                <button class="px-8 py-3 bg-white text-black rounded-full font-bold text-sm uppercase hover:bg-gray-200 transition">
-                    Order Now
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Steps Section -->
-    <section class="py-16 px-6 md:px-16 flex flex-wrap justify-between gap-8 bg-[#F5E8DD]">
-        <div class="flex flex-col items-center text-center w-full sm:w-[22%]">
-            <div class="w-16 h-16 bg-[#EBD9CC] rounded-xl flex items-center justify-center mb-4">
-                <i class="fas fa-mobile-alt text-coffee-dark text-2xl"></i>
-            </div>
-            <h4 class="font-bold text-coffee-dark text-xs uppercase tracking-widest">Order</h4>
-        </div>
-        <div class="flex flex-col items-center text-center w-full sm:w-[22%]">
-            <div class="w-16 h-16 bg-[#EBD9CC] rounded-xl flex items-center justify-center mb-4">
-                <i class="fas fa-wallet text-coffee-dark text-2xl"></i>
-            </div>
-            <h4 class="font-bold text-coffee-dark text-xs uppercase tracking-widest text-[#D7C0AE]">Payment</h4>
-        </div>
-        <div class="flex flex-col items-center text-center w-full sm:w-[22%]">
-            <div class="w-16 h-16 bg-[#EBD9CC] rounded-xl flex items-center justify-center mb-4">
-                <i class="fas fa-utensils text-coffee-dark text-2xl"></i>
-            </div>
-            <h4 class="font-bold text-coffee-dark text-xs uppercase tracking-widest text-[#D7C0AE]">Processing</h4>
-        </div>
-        <div class="flex flex-col items-center text-center w-full sm:w-[22%]">
-            <div class="w-16 h-16 bg-[#EBD9CC] rounded-xl flex items-center justify-center mb-4">
-                <i class="fas fa-motorcycle text-coffee-dark text-2xl"></i>
-            </div>
-            <h4 class="font-bold text-coffee-dark text-xs uppercase tracking-widest text-[#D7C0AE]">Delivery</h4>
-        </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section class="py-20 px-6 md:px-16 bg-white rounded-t-[50px]">
-        <h2 class="text-4xl font-bold text-center text-coffee-dark mb-10">MENU</h2>
-        
-        <!-- Tabs -->
-        <div class="flex flex-wrap justify-center gap-4 mb-16">
-            <button class="px-8 py-2 bg-coffee-medium text-white rounded-full text-sm font-semibold">All</button>
-            <button class="px-8 py-2 border border-coffee-medium text-coffee-medium rounded-full text-sm font-semibold hover:bg-coffee-medium hover:text-white transition">Drink</button>
-            <button class="px-8 py-2 border border-coffee-medium text-coffee-medium rounded-full text-sm font-semibold hover:bg-coffee-medium hover:text-white transition">Food</button>
-            <button class="px-8 py-2 border border-coffee-medium text-coffee-medium rounded-full text-sm font-semibold hover:bg-coffee-medium hover:text-white transition">Snack</button>
-        </div>
-
-        <!-- Coffee Category -->
-        <div class="mb-16">
-            <div class="flex items-center gap-2 mb-8">
-                <div class="w-6 h-6 bg-yellow-800 rounded-full"></div>
-                <h3 class="text-xl font-bold text-coffee-dark">Coffee</h3>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Item 1 -->
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Americano">
-                    <div class="flex justify-between items-center px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Americano Coffee</p>
-                        <p class="text-xs font-bold text-coffee-dark">IDR 12.000</p>
+                <div class="flex gap-4">
+                    <div class="flex -space-x-3">
+                        <img src="https://i.pravatar.cc/100?img=1" class="w-12 h-12 rounded-full border-2 border-white">
+                        <img src="https://i.pravatar.cc/100?img=2" class="w-12 h-12 rounded-full border-2 border-white">
+                        <img src="https://i.pravatar.cc/100?img=3" class="w-12 h-12 rounded-full border-2 border-white">
                     </div>
-                </div>
-                <!-- Item 2 -->
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Cappucino">
-                    <div class="flex justify-between items-center px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Cappucino</p>
-                        <p class="text-xs font-bold text-coffee-dark">IDR 15.000</p>
-                    </div>
-                </div>
-                <!-- Item 3 -->
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Caffe Latte">
-                    <div class="flex justify-between items-center px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Caffe Latte</p>
-                        <p class="text-xs font-bold text-coffee-dark">IDR 15.000</p>
-                    </div>
-                </div>
-                <!-- Item 4 -->
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Palm Sugar">
-                    <div class="flex justify-between items-center px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Palm sugar milk</p>
-                        <p class="text-xs font-bold text-coffee-dark">IDR 18.000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Non-Coffee Category -->
-        <div class="mb-16">
-            <div class="flex items-center gap-2 mb-8">
-                <div class="w-6 h-6 bg-red-600 rounded-full"></div>
-                <h3 class="text-xl font-bold text-coffee-dark">Non-Coffee</h3>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Lemon Tea">
-                    <div class="flex justify-between items-center px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Lemon Tea</p>
-                        <p class="text-xs font-bold text-coffee-dark">IDR 10.000</p>
-                    </div>
-                </div>
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Lychee Tea">
-                    <div class="flex justify-between items-center px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Lychee Tea</p>
-                        <p class="text-xs font-bold text-coffee-dark">IDR 12.000</p>
-                    </div>
-                </div>
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Matcha Latte">
-                    <div class="flex justify-between items-center px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Matcha Latte</p>
-                        <p class="text-xs font-bold text-coffee-dark">IDR 18.000</p>
-                    </div>
-                </div>
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1594631252845-29fc4586c552?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Red Velvet">
-                    <div class="flex justify-between items-center px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Red Velvet Latte</p>
-                        <p class="text-xs font-bold text-coffee-dark">IDR 18.000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Food Category -->
-        <div class="mb-16">
-            <div class="flex items-center gap-2 mb-8">
-                <div class="w-6 h-6 bg-green-800 rounded-full"></div>
-                <h3 class="text-xl font-bold text-coffee-dark">Food</h3>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Pasta">
-                    <div class="flex flex-col px-1">
-                        <p class="text-sm font-bold text-coffee-dark leading-tight">Spaghetti Aglio e Olio</p>
-                        <p class="text-xs font-bold text-coffee-dark mt-1">IDR 20.000</p>
-                    </div>
-                </div>
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Steak">
-                    <div class="flex flex-col px-1">
-                        <p class="text-sm font-bold text-coffee-dark leading-tight">Chicken Steak with Mashed Potato</p>
-                        <p class="text-xs font-bold text-coffee-dark mt-1">IDR 35.000</p>
-                    </div>
-                </div>
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Teriyaki">
-                    <div class="flex flex-col px-1">
-                        <p class="text-sm font-bold text-coffee-dark leading-tight">Teriyaki Chicken Rice Bowl</p>
-                        <p class="text-xs font-bold text-coffee-dark mt-1">IDR 30.000</p>
-                    </div>
-                </div>
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1512058560566-417a91573dcb?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Balinese">
-                    <div class="flex flex-col px-1">
-                        <p class="text-sm font-bold text-coffee-dark leading-tight">Balinese Chicken Rice Bowl</p>
-                        <p class="text-xs font-bold text-coffee-dark mt-1">IDR 30.000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Snack Category -->
-        <div class="mb-8">
-            <div class="flex items-center gap-2 mb-8">
-                <div class="w-6 h-6 bg-orange-400 rounded-full"></div>
-                <h3 class="text-xl font-bold text-coffee-dark">Snack</h3>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Fries">
-                    <div class="flex justify-between items-center px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Truffle Fries</p>
-                        <p class="text-xs font-bold text-coffee-dark">IDR 10.000</p>
-                    </div>
-                </div>
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1639144365121-6b81d7c4909a?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Onion Rings">
-                    <div class="flex justify-between items-center px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Onion Rings</p>
-                        <p class="text-xs font-bold text-coffee-dark">IDR 10.000</p>
-                    </div>
-                </div>
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Tapioca">
-                    <div class="flex justify-between items-center px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Spicy Fried Tapioca</p>
-                        <p class="text-xs font-bold text-coffee-dark">IDR 10.000</p>
-                    </div>
-                </div>
-                <div class="menu-card bg-gray-50 rounded-2xl overflow-hidden shadow-sm p-3">
-                    <img src="https://images.unsplash.com/photo-1528975604071-b4dc52a2d18c?auto=format&fit=crop&w=300&q=80" class="w-full h-40 object-cover rounded-xl mb-4" alt="Banana">
-                    <div class="flex flex-col px-1">
-                        <p class="text-sm font-bold text-coffee-dark">Chocolate Cheese Fried Banana</p>
-                        <p class="text-xs font-bold text-coffee-dark mt-1">IDR 10.000</p>
+                    <div class="text-sm">
+                        <p class="font-bold text-coffee-dark">500+ Happy Customers</p>
+                        <div class="flex text-yellow-600 text-[10px]">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Us Section -->
-    <section class="py-20 px-6 md:px-16 bg-[#D7C0AE] rounded-b-[50px] overflow-hidden">
-        <div class="bg-[#F5E8DD] rounded-[40px] p-8 md:p-12 shadow-xl flex flex-col md:flex-row gap-12">
-            <!-- Form -->
-            <div class="w-full md:w-1/2">
-                <h2 class="text-5xl font-bold text-coffee-dark mb-4">CONTACT US</h2>
-                <p class="text-sm text-coffee-dark/70 mb-8">If you want to enjoy our food on the spot, you can click the map button and will be directed to our address.</p>
-                
-                <form class="space-y-4">
-                    <input type="text" placeholder="Name *" class="w-full p-4 rounded-xl border border-coffee-light bg-transparent focus:outline-none focus:ring-2 focus:ring-coffee-dark">
-                    <input type="email" placeholder="Email" class="w-full p-4 rounded-xl border border-coffee-light bg-transparent focus:outline-none focus:ring-2 focus:ring-coffee-dark">
-                    <input type="text" placeholder="Phone number *" class="w-full p-4 rounded-xl border border-coffee-light bg-transparent focus:outline-none focus:ring-2 focus:ring-coffee-dark">
-                    <textarea placeholder="Your opinions" rows="4" class="w-full p-4 rounded-xl border border-coffee-light bg-transparent focus:outline-none focus:ring-2 focus:ring-coffee-dark"></textarea>
-                    
-                    <button class="w-full py-4 bg-coffee-dark text-white rounded-full font-bold uppercase tracking-widest hover:bg-black transition">
-                        SEND
+    <!-- About Us Section (Lebih Lebar) -->
+    <section id="about" class="bg-black text-white py-32">
+        <div class="wide-container px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="grid grid-cols-2 gap-6">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80" class="w-full h-[500px] object-cover rounded-[40px] shadow-2xl" alt="Cafe Interior">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=600&q=80" class="w-full h-[500px] object-cover rounded-[40px] mt-20 shadow-2xl" alt="Barista Work">
+                </div>
+                <div class="space-y-10">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-[2px] bg-white"></div>
+                        <h2 class="text-4xl font-black uppercase tracking-[0.3em]">About Us</h2>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-2xl font-light leading-relaxed text-gray-300">
+                            Di balik kegelapan malam, ada secangkir kopi yang menerangi. <span class="text-white font-bold">Dark Mode Coffee</span> hadir untuk menemani setiap momen Anda dengan perpaduan biji kopi pilihan terbaik.
+                        </p>
+                        <p class="text-lg text-gray-400 leading-relaxed italic">
+                            Kami percaya kopi bukan sekadar minuman, tapi sebuah pengalaman—perpaduan aroma khas, rasa yang mendalam, dan atmosfer yang menenangkan. Dengan konsep "Dark & Cozy", kami menciptakan ruang ternyaman bagi para pecinta kopi dan 'night owls'.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-8 py-8 border-y border-white/10">
+                        <div>
+                            <h4 class="text-3xl font-bold">100%</h4>
+                            <p class="text-gray-500 text-sm uppercase tracking-widest mt-2">Organic Beans</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-bold">15+</h4>
+                            <p class="text-gray-500 text-sm uppercase tracking-widest mt-2">Special Blends</p>
+                        </div>
+                    </div>
+                    <button class="group flex items-center gap-4 text-sm font-bold uppercase tracking-widest hover:text-coffee-accent transition-all">
+                        Discover Our Story
+                        <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
                     </button>
-                </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="mt-8 grid grid-cols-2 gap-4">
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-phone text-coffee-dark"></i>
-                        <span class="text-xs font-semibold">+6285555555555</span>
+    <!-- Workflow / Delivery -->
+    <section id="delivery" class="py-24 bg-coffee-cream">
+        <div class="wide-container px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto bg-white rounded-3xl flex items-center justify-center mb-6 shadow-xl group-hover:bg-coffee-dark group-hover:rotate-12 transition-all duration-500">
+                        <i class="fas fa-mobile-alt text-3xl text-coffee-dark group-hover:text-white"></i>
                     </div>
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-envelope text-coffee-dark"></i>
-                        <span class="text-xs font-semibold">darkmodedesign1@gmail.com</span>
+                    <h4 class="font-black text-coffee-dark uppercase tracking-widest">Order</h4>
+                    <p class="text-xs text-coffee-dark/50 mt-2 font-bold">Easy via App</p>
+                </div>
+                <div class="text-center group opacity-40 hover:opacity-100 transition-opacity">
+                    <div class="w-24 h-24 mx-auto bg-white rounded-3xl flex items-center justify-center mb-6 shadow-xl group-hover:bg-coffee-dark group-hover:rotate-12 transition-all duration-500">
+                        <i class="fas fa-wallet text-3xl text-coffee-dark group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-black text-coffee-dark uppercase tracking-widest">Payment</h4>
+                    <p class="text-xs text-coffee-dark/50 mt-2 font-bold">Secure Digital Pay</p>
+                </div>
+                <div class="text-center group opacity-40 hover:opacity-100 transition-opacity">
+                    <div class="w-24 h-24 mx-auto bg-white rounded-3xl flex items-center justify-center mb-6 shadow-xl group-hover:bg-coffee-dark group-hover:rotate-12 transition-all duration-500">
+                        <i class="fas fa-utensils text-3xl text-coffee-dark group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-black text-coffee-dark uppercase tracking-widest">Processing</h4>
+                    <p class="text-xs text-coffee-dark/50 mt-2 font-bold">Crafted with Love</p>
+                </div>
+                <div class="text-center group opacity-40 hover:opacity-100 transition-opacity">
+                    <div class="w-24 h-24 mx-auto bg-white rounded-3xl flex items-center justify-center mb-6 shadow-xl group-hover:bg-coffee-dark group-hover:rotate-12 transition-all duration-500">
+                        <i class="fas fa-motorcycle text-3xl text-coffee-dark group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-black text-coffee-dark uppercase tracking-widest">Delivery</h4>
+                    <p class="text-xs text-coffee-dark/50 mt-2 font-bold">Fast to Your Door</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section (Grid Terang & Lebar) -->
+    <section id="menu" class="py-32 bg-white rounded-t-[100px] shadow-[0_-50px_100px_-20px_rgba(0,0,0,0.05)]">
+        <div class="wide-container px-6">
+            <div class="text-center mb-20 space-y-4">
+                <h2 class="text-6xl font-black text-coffee-dark tracking-tighter">OUR MENU</h2>
+                <div class="w-24 h-1 bg-coffee-dark mx-auto"></div>
+            </div>
+            
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-20">
+                <button class="px-12 py-4 bg-coffee-dark text-white rounded-full text-xs font-black uppercase tracking-widest shadow-xl">All Items</button>
+                <button class="px-12 py-4 border-2 border-coffee-accent text-coffee-dark rounded-full text-xs font-black uppercase tracking-widest hover:bg-coffee-cream transition-all">Coffee</button>
+                <button class="px-12 py-4 border-2 border-coffee-accent text-coffee-dark rounded-full text-xs font-black uppercase tracking-widest hover:bg-coffee-cream transition-all">Non-Coffee</button>
+                <button class="px-12 py-4 border-2 border-coffee-accent text-coffee-dark rounded-full text-xs font-black uppercase tracking-widest hover:bg-coffee-cream transition-all">Food & Snack</button>
+            </div>
+
+            <!-- Categories -->
+            <div class="space-y-24">
+                <!-- Coffee Category -->
+                <div>
+                    <div class="flex items-center gap-4 mb-12">
+                        <span class="w-10 h-10 bg-yellow-900 rounded-full"></span>
+                        <h3 class="text-3xl font-black text-coffee-dark uppercase tracking-tighter">The Coffee Collection</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Menu Item 1 -->
+                        <div class="menu-card bg-coffee-cream/30 p-4 rounded-[40px] border border-coffee-accent/20">
+                            <div class="relative overflow-hidden rounded-[30px] h-64 mb-6">
+                                <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
+                                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full font-black text-xs">IDR 12K</div>
+                            </div>
+                            <h4 class="text-xl font-bold px-4 mb-2">Americano Coffee</h4>
+                            <p class="text-xs text-gray-500 px-4 mb-4 font-medium uppercase tracking-widest">Strong & Bold</p>
+                            <button class="w-full py-4 bg-white border border-coffee-accent/30 rounded-[24px] text-xs font-bold uppercase hover:bg-coffee-dark hover:text-white transition-all">Add to Cart</button>
+                        </div>
+                        <!-- Menu Item 2 -->
+                        <div class="menu-card bg-coffee-cream/30 p-4 rounded-[40px] border border-coffee-accent/20">
+                            <div class="relative overflow-hidden rounded-[30px] h-64 mb-6">
+                                <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
+                                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full font-black text-xs">IDR 15K</div>
+                            </div>
+                            <h4 class="text-xl font-bold px-4 mb-2">Creamy Cappucino</h4>
+                            <p class="text-xs text-gray-500 px-4 mb-4 font-medium uppercase tracking-widest">Smooth Foam</p>
+                            <button class="w-full py-4 bg-white border border-coffee-accent/30 rounded-[24px] text-xs font-bold uppercase hover:bg-coffee-dark hover:text-white transition-all">Add to Cart</button>
+                        </div>
+                        <!-- Menu Item 3 -->
+                        <div class="menu-card bg-coffee-cream/30 p-4 rounded-[40px] border border-coffee-accent/20">
+                            <div class="relative overflow-hidden rounded-[30px] h-64 mb-6">
+                                <img src="https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
+                                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full font-black text-xs">IDR 15K</div>
+                            </div>
+                            <h4 class="text-xl font-bold px-4 mb-2">Caffe Latte</h4>
+                            <p class="text-xs text-gray-500 px-4 mb-4 font-medium uppercase tracking-widest">Perfect Balance</p>
+                            <button class="w-full py-4 bg-white border border-coffee-accent/30 rounded-[24px] text-xs font-bold uppercase hover:bg-coffee-dark hover:text-white transition-all">Add to Cart</button>
+                        </div>
+                        <!-- Menu Item 4 -->
+                        <div class="menu-card bg-coffee-cream/30 p-4 rounded-[40px] border border-coffee-accent/20">
+                            <div class="relative overflow-hidden rounded-[30px] h-64 mb-6">
+                                <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
+                                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full font-black text-xs">IDR 18K</div>
+                            </div>
+                            <h4 class="text-xl font-bold px-4 mb-2">Palm Sugar Milk</h4>
+                            <p class="text-xs text-gray-500 px-4 mb-4 font-medium uppercase tracking-widest">Signature Sweet</p>
+                            <button class="w-full py-4 bg-white border border-coffee-accent/30 rounded-[24px] text-xs font-bold uppercase hover:bg-coffee-dark hover:text-white transition-all">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Map Placeholder -->
-            <div class="w-full md:w-1/2 rounded-3xl overflow-hidden shadow-lg border-8 border-white">
-                <!-- Gunakan gambar map asli atau placeholder yang mirip desain -->
-                <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=600&q=80" alt="Location Map" class="w-full h-full object-cover min-h-[400px]">
-                <div class="absolute bottom-10 right-10 md:static"></div>
+    <!-- Contact & Map Section (Super Lebar) -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="wide-container px-6">
+            <div class="bg-coffee-cream rounded-[80px] overflow-hidden flex flex-col xl:flex-row shadow-2xl">
+                <!-- Form Kontak -->
+                <div class="w-full xl:w-1/2 p-12 md:p-20">
+                    <h2 class="text-6xl font-black text-coffee-dark mb-6 leading-none">LET'S<br>TALK.</h2>
+                    <p class="text-lg text-coffee-dark/60 mb-12 font-medium">Ada pertanyaan? Ingin kolaborasi? Jangan ragu untuk menyapa kami.</p>
+                    
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" placeholder="Full Name *" class="w-full bg-white px-8 py-5 rounded-3xl border-transparent focus:border-coffee-dark focus:ring-0 transition-all font-bold placeholder:text-gray-300">
+                            <input type="email" placeholder="Email Address" class="w-full bg-white px-8 py-5 rounded-3xl border-transparent focus:border-coffee-dark focus:ring-0 transition-all font-bold placeholder:text-gray-300">
+                        </div>
+                        <input type="text" placeholder="Subject *" class="w-full bg-white px-8 py-5 rounded-3xl border-transparent focus:border-coffee-dark focus:ring-0 transition-all font-bold placeholder:text-gray-300">
+                        <textarea placeholder="Your Message..." rows="5" class="w-full bg-white px-8 py-5 rounded-3xl border-transparent focus:border-coffee-dark focus:ring-0 transition-all font-bold placeholder:text-gray-300"></textarea>
+                        
+                        <button class="w-full py-6 bg-coffee-dark text-white rounded-3xl font-black uppercase tracking-[0.3em] hover:bg-black transition-all shadow-xl">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Area Map -->
+                <div class="w-full xl:w-1/2 relative min-h-[500px]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15814.469503461234!2d111.5152865!3d-7.6165997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79befa74075f11%3A0x6b772c730245a499!2sTaman%2C%20Madiun%20City%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1709730000000!5m2!1sen!2sid" class="absolute inset-0 w-full h-full grayscale hover:grayscale-0 transition-all duration-1000 border-none" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="absolute bottom-10 left-10 right-10 bg-white/90 backdrop-blur p-8 rounded-[40px] shadow-2xl">
+                        <h4 class="font-black text-coffee-dark text-lg mb-2">OUR LOCATION</h4>
+                        <p class="text-sm text-gray-600 font-medium">Banjarejo, Taman, Madiun City, East Java 63137</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-coffee-dark text-white py-16 px-6 md:px-16">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
-            <!-- Branding -->
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                        <i class="fas fa-coffee text-white"></i>
+    <footer class="bg-coffee-dark text-white py-24">
+        <div class="wide-container px-6">
+            <div class="grid lg:grid-cols-4 gap-16 mb-20">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                            <i class="fas fa-coffee text-coffee-dark"></i>
+                        </div>
+                        <span class="text-3xl font-black tracking-tighter uppercase">DarkMode</span>
                     </div>
-                    <span class="text-2xl font-bold tracking-tighter">DarkMode</span>
+                    <p class="text-coffee-accent/40 text-sm leading-relaxed">
+                        Destinasi kopi terbaik di kota Anda. Kami menghadirkan kualitas dalam setiap tetesnya sejak 2024.
+                    </p>
                 </div>
-                <p class="text-coffee-light/60 text-sm max-w-xs">Coffee</p>
-            </div>
+                
+                <div class="space-y-6">
+                    <h5 class="text-xs font-black uppercase tracking-[0.3em] text-coffee-accent">Contact</h5>
+                    <ul class="space-y-4 text-sm font-medium text-white/70">
+                        <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-coffee-accent"></i> +62 855 5555 5555</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-coffee-accent"></i> darkmodedesign1@gmail.com</li>
+                    </ul>
+                </div>
 
-            <!-- Contact Details -->
-            <div class="space-y-4">
-                <div class="flex items-start gap-4">
-                    <i class="fas fa-map-marker-alt mt-1"></i>
-                    <p class="text-sm text-coffee-light/80">Address: Banjarejo, Taman, Madiun City, East Java 63137</p>
+                <div class="space-y-6">
+                    <h5 class="text-xs font-black uppercase tracking-[0.3em] text-coffee-accent">Opening Hours</h5>
+                    <ul class="space-y-4 text-sm font-medium text-white/70">
+                        <li>Mon - Fri: 10:00 - 22:00</li>
+                        <li>Sat - Sun: 09:00 - 23:00</li>
+                    </ul>
                 </div>
-                <div class="flex items-center gap-4">
-                    <i class="fas fa-phone-alt"></i>
-                    <p class="text-sm text-coffee-light/80">Phone: +6285555555555</p>
-                </div>
-                <div class="flex items-center gap-4">
-                    <i class="fas fa-envelope"></i>
-                    <p class="text-sm text-coffee-light/80">Email: darkmodedesign1@gmail.com</p>
-                </div>
-                <div class="flex items-center gap-4">
-                    <i class="far fa-clock"></i>
-                    <p class="text-sm text-coffee-light/80">Operating Hours: Monday - Sunday 10:00 am - 10:00 pm</p>
-                </div>
-            </div>
 
-            <!-- Social Media -->
-            <div class="flex flex-col items-end">
-                <span class="text-sm font-bold mb-4 uppercase tracking-widest">Follow Us:</span>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/30 transition">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/30 transition">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/30 transition">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                <div class="space-y-6">
+                    <h5 class="text-xs font-black uppercase tracking-[0.3em] text-coffee-accent">Socials</h5>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white hover:text-coffee-dark transition-all duration-500">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white hover:text-coffee-dark transition-all duration-500">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white hover:text-coffee-dark transition-all duration-500">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="mt-16 pt-8 border-t border-white/10 text-center text-xs text-coffee-light/40">
-            &copy; 2024 DarkMode Coffee. All rights reserved.
+            
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-white/20">
+                <p>&copy; 2024 DarkMode Coffee. Built with Passion.</p>
+                <div class="flex gap-10">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
