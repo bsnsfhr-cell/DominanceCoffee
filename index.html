@@ -3,241 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dominance Coffee | Premium Experience</title>
+    <title>Dominance Coffee | Your Evening Companion</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-heading { font-family: 'Oswald', sans-serif; }
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+        :root {
+            --bg-cream: #E5D3C5;
+            --accent-brown: #3C2A21;
+            --text-dark: #1A120B;
         }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-cream); color: var(--text-dark); }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .menu-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .btn-order { background: #D4A373; color: white; border-radius: 25px; }
     </style>
 </head>
-<body class="bg-white text-slate-900 overflow-x-hidden">
+<body>
 
-    <!-- Navbar -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-black py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2">
-                <span class="text-white text-2xl font-black tracking-tighter uppercase italic font-heading">Dominance<span class="text-amber-500">.</span></span>
-            </a>
-            <div class="hidden md:flex items-center gap-8 text-white">
-                <a href="#home" class="text-xs font-bold uppercase tracking-widest hover:text-amber-500 transition-colors">Beranda</a>
-                <a href="#about" class="text-xs font-bold uppercase tracking-widest hover:text-amber-500 transition-colors">Tentang Kami</a>
-                <a href="#menu" class="text-xs font-bold uppercase tracking-widest hover:text-amber-500 transition-colors">Menu</a>
-                <a href="#location" class="text-xs font-bold uppercase tracking-widest hover:text-amber-500 transition-colors">Lokasi</a>
-                <a href="https://wa.me/628123456789" class="bg-amber-500 text-black px-6 py-2 rounded-sm font-bold text-xs uppercase hover:bg-amber-400 transition-all">Pesan Sekarang</a>
+    <!-- Header / Navbar -->
+    <nav class="w-full py-6 px-10 flex justify-between items-center fixed top-0 z-50 bg-[#E5D3C5]/80 backdrop-blur-md">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-[#3C2A21] rounded-full flex items-center justify-center">
+                <i data-lucide="coffee" class="text-[#E5D3C5] w-5 h-5"></i>
             </div>
-            <button class="md:hidden text-white" id="menu-btn">
-                <i data-lucide="menu"></i>
-            </button>
+            <span class="font-extrabold text-xl tracking-tighter">DOMINANCE</span>
         </div>
+        <div class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest opacity-70">
+            <a href="#home" class="hover:text-amber-800">Beranda</a>
+            <a href="#about" class="hover:text-amber-800">Tentang Kami</a>
+            <a href="#delivery" class="hover:text-amber-800">Pengiriman</a>
+            <a href="#menu" class="hover:text-amber-800">Menu</a>
+            <a href="#contact" class="hover:text-amber-800">Kontak</a>
+        </div>
+        <button class="border border-black/20 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest">Order</button>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-black z-[60] flex flex-col items-center justify-center gap-8 hidden">
-        <button id="close-btn" class="absolute top-8 right-8 text-white"><i data-lucide="x" class="w-10 h-10"></i></button>
-        <a href="#home" class="text-white text-2xl font-bold uppercase font-heading">Beranda</a>
-        <a href="#about" class="text-white text-2xl font-bold uppercase font-heading">Tentang Kami</a>
-        <a href="#menu" class="text-white text-2xl font-bold uppercase font-heading">Menu</a>
-        <a href="#location" class="text-white text-2xl font-bold uppercase font-heading">Lokasi</a>
-    </div>
-
-    <!-- Hero Section (Tetap Gelap/Mewah) -->
-    <section id="home" class="relative h-screen flex items-center bg-black overflow-hidden">
-        <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2000" alt="Latar Belakang Kopi" class="w-full h-full object-cover opacity-60">
-            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent"></div>
-        </div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-2xl">
-                <h2 class="text-amber-500 font-bold tracking-[0.3em] mb-4 uppercase text-sm">Premium Coffee Roasters</h2>
-                <h1 class="text-white text-6xl md:text-8xl font-black leading-tight mb-8 font-heading uppercase italic">
-                    Dominate <br><span class="text-amber-500">Your Morning.</span>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 px-10 lg:px-20 overflow-hidden">
+        <div class="container mx-auto grid md:grid-cols-2 items-center gap-10">
+            <div class="relative">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-white/20 rounded-full blur-3xl"></div>
+                <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1000&auto=format&fit=crop" alt="Barista Dominance" class="w-full max-w-md mx-auto relative z-10 rounded-b-full">
+            </div>
+            <div class="space-y-6">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                    "From the finest coffee beans, it gives warmth in every sip"
                 </h1>
-                <p class="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed max-w-lg">
-                    Menyajikan kualitas kopi terbaik untuk mendominasi hari-hari Anda. Dibuat dengan presisi, disajikan dengan hati.
+                <p class="text-xl opacity-80 font-medium">
+                    Welcome to Dominance, your evening companion. ✨
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#menu" class="bg-amber-500 text-black px-10 py-4 font-bold uppercase tracking-widest text-sm hover:bg-amber-400 transition-all text-center">Lihat Menu</a>
-                    <a href="#location" class="border-2 border-white text-white px-10 py-4 font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-all text-center">Cek Lokasi</a>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section (Background Putih) -->
-    <section id="about" class="py-24 bg-white">
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="container mx-auto bg-[#1A120B] rounded-[3rem] p-10 md:p-20 text-white flex flex-col md:flex-row gap-12 items-center relative overflow-hidden">
+            <div class="w-full md:w-1/2 space-y-6 relative z-10">
+                <h2 class="text-4xl md:text-6xl font-black italic flex items-center gap-4">
+                    <i data-lucide="info" class="w-12 h-12"></i> ABOUT US
+                </h2>
+                <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                    Di balik malam yang gelap, ada secangkir kopi yang menerangi. Dominance Coffee hadir untuk menemani setiap momen Anda dengan perpaduan biji kopi pilihan berkualitas. Kami percaya bahwa kopi bukan sekadar minuman, melainkan sebuah pengalaman—perpaduan aroma yang khas, cita rasa yang mendalam, dan suasana yang menenangkan.
+                </p>
+                <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                    Dengan konsep gelap dan nyaman, kami menciptakan ruang yang nyaman bagi para pecinta kopi dan mereka yang bekerja hingga larut malam. Nikmati suasana hangat di bawah lampu temaram, ditemani musik yang menenangkan, dan kopi premium yang disiapkan dengan sepenuh hati.
+                </p>
+                <button class="bg-white text-black px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-gray-200 transition-all">Order Now</button>
+            </div>
+            <div class="w-full md:w-1/2 grid grid-cols-2 gap-4 relative z-10">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&auto=format" class="rounded-3xl w-full h-64 object-cover" alt="Kopi 1">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&auto=format" class="rounded-3xl w-full h-64 object-cover mt-10" alt="Kopi 2">
+            </div>
+            <!-- Decorative circle -->
+            <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-[#3C2A21] rounded-full opacity-50"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="delivery" class="py-20 container mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="flex flex-col items-center text-center space-y-4">
+                <img src="https://cdn-icons-png.flaticon.com/512/3502/3502601.png" class="w-20 h-20 grayscale" alt="Order">
+                <p class="font-black uppercase text-[10px] tracking-widest opacity-40">Order</p>
+            </div>
+            <div class="flex flex-col items-center text-center space-y-4">
+                <img src="https://cdn-icons-png.flaticon.com/512/1019/1019607.png" class="w-20 h-20 grayscale" alt="Payment">
+                <p class="font-black uppercase text-[10px] tracking-widest opacity-40">Payment</p>
+            </div>
+            <div class="flex flex-col items-center text-center space-y-4">
+                <img src="https://cdn-icons-png.flaticon.com/512/9116/9116819.png" class="w-20 h-20 grayscale" alt="Processing">
+                <p class="font-black uppercase text-[10px] tracking-widest opacity-40">Processing</p>
+            </div>
+            <div class="flex flex-col items-center text-center space-y-4">
+                <img src="https://cdn-icons-png.flaticon.com/512/2916/2916102.png" class="w-20 h-20 grayscale" alt="Delivery">
+                <p class="font-black uppercase text-[10px] tracking-widest opacity-40">Delivery</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-white rounded-t-[4rem]">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=1000" alt="Tentang Dominance" class="shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000">
-                </div>
-                <div class="lg:w-1/2">
-                    <h3 class="text-amber-600 font-bold uppercase tracking-widest text-sm mb-4">Our Story</h3>
-                    <h2 class="text-4xl md:text-5xl font-black mb-6 font-heading uppercase">Filosofi Dominasi Rasa</h2>
-                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
-                        Dominance Coffee bukan sekadar tempat minum kopi. Kami adalah perwujudan dari semangat pantang menyerah. Setiap biji yang kami pilih melewati proses kurasi ketat untuk memastikan standar tertinggi sampai ke meja Anda.
-                    </p>
-                    <p class="text-slate-600 text-lg leading-relaxed mb-8">
-                        Kami percaya bahwa kopi yang kuat adalah fondasi bagi hari yang produktif. Ruang kami dirancang untuk mendukung fokus Anda, baik untuk bekerja maupun berdiskusi kreatif.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-slate-50 p-6 border-l-4 border-amber-500">
-                            <p class="text-3xl font-black">100%</p>
-                            <p class="text-xs uppercase font-bold text-slate-400">Arabika Pilihan</p>
-                        </div>
-                        <div class="bg-slate-50 p-6 border-l-4 border-amber-500">
-                            <p class="text-3xl font-black">24/7</p>
-                            <p class="text-xs uppercase font-bold text-slate-400">Customer Support</p>
-                        </div>
-                    </div>
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-5xl font-black italic font-serif">MENU</h2>
+                <div class="flex justify-center gap-4">
+                    <button class="bg-[#3C2A21] text-white px-6 py-2 rounded-full text-xs font-bold">All</button>
+                    <button class="border border-black/10 px-6 py-2 rounded-full text-xs font-bold hover:bg-gray-100">Drink</button>
+                    <button class="border border-black/10 px-6 py-2 rounded-full text-xs font-bold hover:bg-gray-100">Food</button>
+                    <button class="border border-black/10 px-6 py-2 rounded-full text-xs font-bold hover:bg-gray-100">Snack</button>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Menu Section (Background Putih & Solid) -->
-    <section id="menu" class="py-24 bg-slate-50">
-        <div class="container mx-auto px-6 text-center">
-            <h3 class="text-amber-600 font-bold uppercase tracking-widest text-sm mb-4">Crafted Selection</h3>
-            <h2 class="text-4xl md:text-6xl font-black mb-16 font-heading uppercase">Menu Dominasi</h2>
-
-            <!-- Coffee Menu -->
+            <!-- Coffee Section -->
             <div class="mb-20">
-                <h4 class="text-2xl font-black mb-10 text-left border-b-4 border-black inline-block uppercase italic">Signature Coffee</h4>
-                <div class="menu-grid">
-                    <div class="bg-white p-8 border border-slate-200 text-left hover:border-amber-500 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold group-hover:text-amber-600 transition-colors uppercase italic">Dominance Black Gold</h5>
-                            <span class="font-black text-xl">35k</span>
+                <h3 class="flex items-center gap-3 text-xl font-black mb-8 italic">
+                    <i data-lucide="coffee" class="text-amber-800"></i> COFFEE
+                </h3>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1541167760496-162955ed8a9f?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Americano">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Americano Coffee</h4>
+                            <p class="text-[10px] font-black">IDR 12.000</p>
                         </div>
-                        <p class="text-slate-500 text-sm italic font-light">Espresso double shot dengan aroma cokelat murni dan sentuhan kacang panggang.</p>
                     </div>
-                    <div class="bg-white p-8 border border-slate-200 text-left hover:border-amber-500 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold group-hover:text-amber-600 transition-colors uppercase italic">Creamy Velvet Latte</h5>
-                            <span class="font-black text-xl">38k</span>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Cappucino">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Cappucino</h4>
+                            <p class="text-[10px] font-black">IDR 15.000</p>
                         </div>
-                        <p class="text-slate-500 text-sm italic font-light">Perpaduan susu premium yang lembut dengan espresso arabika medium roast.</p>
                     </div>
-                    <div class="bg-white p-8 border border-slate-200 text-left hover:border-amber-500 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold group-hover:text-amber-600 transition-colors uppercase italic">Caramelized Soul</h5>
-                            <span class="font-black text-xl">42k</span>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Caffe Latte">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Caffe Latte</h4>
+                            <p class="text-[10px] font-black">IDR 15.000</p>
                         </div>
-                        <p class="text-slate-500 text-sm italic font-light">Macchiato dengan saus karamel buatan sendiri yang memberikan aftertaste manis alami.</p>
+                    </div>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Palm Sugar">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Palm Sugar Milk Coffee</h4>
+                            <p class="text-[10px] font-black">IDR 18.000</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Non-Coffee Menu -->
+            <!-- Non-Coffee Section -->
             <div class="mb-20">
-                <h4 class="text-2xl font-black mb-10 text-left border-b-4 border-black inline-block uppercase italic">Non-Coffee Refreshers</h4>
-                <div class="menu-grid">
-                    <div class="bg-white p-8 border border-slate-200 text-left hover:border-amber-500 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold group-hover:text-amber-600 transition-colors uppercase italic">Matcha Zen Ceremonial</h5>
-                            <span class="font-black text-xl">38k</span>
+                <h3 class="flex items-center gap-3 text-xl font-black mb-8 italic text-red-800">
+                    <i data-lucide="droplets"></i> NON-COFFEE
+                </h3>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Lemon Tea">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Lemon Tea</h4>
+                            <p class="text-[10px] font-black">IDR 10.000</p>
                         </div>
-                        <p class="text-slate-500 text-sm italic font-light">Bubuk matcha asli Jepang dengan susu almond segar.</p>
                     </div>
-                    <div class="bg-white p-8 border border-slate-200 text-left hover:border-amber-500 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold group-hover:text-amber-600 transition-colors uppercase italic">Dominance Dark Cocoa</h5>
-                            <span class="font-black text-xl">35k</span>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1499638673689-79a0b5115d87?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Lychee Tea">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Lychee Tea</h4>
+                            <p class="text-[10px] font-black">IDR 12.000</p>
                         </div>
-                        <p class="text-slate-500 text-sm italic font-light">Cokelat pekat 70% dark cocoa dengan foam susu melimpah.</p>
                     </div>
-                    <div class="bg-white p-8 border border-slate-200 text-left hover:border-amber-500 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold group-hover:text-amber-600 transition-colors uppercase italic">Berry Boost Tea</h5>
-                            <span class="font-black text-xl">32k</span>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1515823662273-0b78805881ac?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Matcha">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Matcha Latte</h4>
+                            <p class="text-[10px] font-black">IDR 18.000</p>
                         </div>
-                        <p class="text-slate-500 text-sm italic font-light">Campuran teh artisan dengan potongan buah beri segar yang asam manis.</p>
+                    </div>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1544787210-2213d44ad53e?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Red Velvet">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Red Velvet Latte</h4>
+                            <p class="text-[10px] font-black">IDR 18.000</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bites Menu -->
+            <!-- Food Section -->
+            <div class="mb-20">
+                <h3 class="flex items-center gap-3 text-xl font-black mb-8 italic text-amber-600">
+                    <i data-lucide="utensils"></i> FOOD
+                </h3>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Spaghetti">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Spaghetti Aglio e Olio</h4>
+                            <p class="text-[10px] font-black">IDR 20.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Chicken Steak">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Chicken Steak w/ Mashed Potato</h4>
+                            <p class="text-[10px] font-black">IDR 35.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Teriyaki">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Teriyaki Chicken Rice Bowl</h4>
+                            <p class="text-[10px] font-black">IDR 30.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Balinese">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Balinese Chicken Rice Bowl</h4>
+                            <p class="text-[10px] font-black">IDR 30.000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Snack Section -->
             <div>
-                <h4 class="text-2xl font-black mb-10 text-left border-b-4 border-black inline-block uppercase italic">Lite Bites & Pastry</h4>
-                <div class="menu-grid">
-                    <div class="bg-white p-8 border border-slate-200 text-left hover:border-amber-500 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold group-hover:text-amber-600 transition-colors uppercase italic">Butter Croissant</h5>
-                            <span class="font-black text-xl">28k</span>
+                <h3 class="flex items-center gap-3 text-xl font-black mb-8 italic text-orange-800">
+                    <i data-lucide="cookie"></i> SNACK
+                </h3>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1518013046770-41da6049a12c?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Fries">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Truffle Fries</h4>
+                            <p class="text-[10px] font-black">IDR 10.000</p>
                         </div>
-                        <p class="text-slate-500 text-sm italic font-light">Pastry Prancis otentik dengan lapisan renyah dan aroma mentega yang kuat.</p>
                     </div>
-                    <div class="bg-white p-8 border border-slate-200 text-left hover:border-amber-500 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold group-hover:text-amber-600 transition-colors uppercase italic">Truffle Parmesan Fries</h5>
-                            <span class="font-black text-xl">35k</span>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1639122612239-c1851f1cc21b?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Onion Rings">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Onion Rings</h4>
+                            <p class="text-[10px] font-black">IDR 10.000</p>
                         </div>
-                        <p class="text-slate-500 text-sm italic font-light">Kentang goreng dengan taburan parmesan dan minyak truffle premium.</p>
                     </div>
-                    <div class="bg-white p-8 border border-slate-200 text-left hover:border-amber-500 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold group-hover:text-amber-600 transition-colors uppercase italic">Cheese Cake Slice</h5>
-                            <span class="font-black text-xl">45k</span>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Tapioca">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Spicy Fried Tapioca</h4>
+                            <p class="text-[10px] font-black">IDR 10.000</p>
                         </div>
-                        <p class="text-slate-500 text-sm italic font-light">Kue keju lembut dengan topping buah segar.</p>
+                    </div>
+                    <div class="menu-card p-4 space-y-4">
+                        <img src="https://images.unsplash.com/photo-1559144490-8328294facd8?w=400&auto=format" class="w-full h-40 object-cover rounded-2xl" alt="Banana">
+                        <div class="flex justify-between items-end">
+                            <h4 class="font-bold text-xs uppercase tracking-tighter">Choco Cheese Fried Banana</h4>
+                            <p class="text-[10px] font-black">IDR 10.000</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Location Section (Background Putih) -->
-    <section id="location" class="py-24 bg-white border-t border-slate-100">
-        <div class="container mx-auto px-6 text-center">
-            <h3 class="text-amber-600 font-bold uppercase tracking-widest text-sm mb-4">Find Our Store</h3>
-            <h2 class="text-4xl md:text-5xl font-black mb-16 font-heading uppercase italic">Lokasi Dominansi</h2>
-            
-            <div class="flex flex-col lg:flex-row gap-12 bg-black text-white p-12 lg:p-20 shadow-2xl">
-                <div class="lg:w-1/2 text-left">
-                    <div class="flex items-center gap-4 mb-8">
-                        <i data-lucide="map-pin" class="text-amber-500"></i>
-                        <p class="font-bold text-xl uppercase tracking-tighter italic">Sudirman Park Blok A No. 12, Jakarta Pusat</p>
+    <!-- Contact & Maps Section -->
+    <section id="contact" class="py-20 bg-[#E5D3C5]">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div class="space-y-8">
+                <h2 class="text-6xl font-black italic tracking-tighter">CONTACT US</h2>
+                <p class="text-sm opacity-60 italic">If you want to enjoy our food on the spot, you can click the map button and will be directed to our address.</p>
+                <form class="space-y-4">
+                    <input type="text" placeholder="Name *" class="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-black placeholder-black/30 italic text-sm">
+                    <input type="email" placeholder="Email" class="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-black placeholder-black/30 italic text-sm">
+                    <input type="tel" placeholder="Phone number *" class="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-black placeholder-black/30 italic text-sm">
+                    <textarea placeholder="Your opinions" rows="3" class="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-black placeholder-black/30 italic text-sm"></textarea>
+                    <button class="bg-[#D4A373] text-white px-12 py-4 rounded-full font-black uppercase tracking-[0.2em] text-[10px] hover:bg-[#3C2A21] transition-all">Send</button>
+                </form>
+                <div class="flex flex-col md:flex-row gap-8 pt-6">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="phone" class="w-5 h-5 text-amber-800"></i>
+                        <span class="text-xs font-bold">+62 855-5555-5555</span>
                     </div>
-                    <div class="flex items-start gap-4 mb-12">
-                        <i data-lucide="clock" class="text-amber-500 mt-1"></i>
-                        <div class="text-sm space-y-2 text-slate-400 font-medium">
-                            <p class="flex justify-between gap-10 border-b border-white/10 pb-2"><span>Senin - Jumat:</span> <span>08:00 - 22:00</span></p>
-                            <p class="flex justify-between gap-10"><span>Sabtu - Minggu:</span> <span>09:00 - 23:00</span></p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://maps.app.goo.gl/RKSpRg21vqp1un3TA" target="_blank" class="bg-white text-black px-8 py-3 font-bold uppercase text-xs tracking-widest hover:bg-amber-500 transition-all inline-block text-center">Buka Peta</a>
-                        <a href="https://wa.me/628123456789" class="border border-white/30 text-white px-8 py-3 font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-all inline-block text-center">Hubungi Barista</a>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="mail" class="w-5 h-5 text-amber-800"></i>
+                        <span class="text-xs font-bold">dominancedesign@gmail.com</span>
                     </div>
                 </div>
-                <div class="lg:w-1/2 h-[350px] bg-slate-800 relative group overflow-hidden">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.194041199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f42289196b6d%3A0xc6643c14c330c90c!2sDominance%20Coffee!5e0!3m2!1sen!2sid!4v1715600000000!5m2!1sen!2sid" 
-                        class="w-full h-full border-0 grayscale invert brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:invert-0"
-                        allowfullscreen="" loading="lazy"></iframe>
-                </div>
+            </div>
+            <div class="rounded-[2rem] overflow-hidden shadow-2xl h-[500px] border-8 border-white">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.194041199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f42289196b6d%3A0xc6643c14c330c90c!2sDominance%20Coffee!5e0!3m2!1sen!2sid!4v1715600000000!5m2!1sen!2sid" 
+                    class="w-full h-full border-0 grayscale contrast-125"
+                    allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-white border-t border-slate-100">
-        <div class="container mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-10">
-            <div>
-                <span class="text-black text-2xl font-black tracking-tighter uppercase italic font-heading">Dominance<span class="text-amber-500">.</span></span>
-                <p class="text-slate-400 text-xs mt-2 uppercase tracking-widest font-bold">&copy; 2024 Semua Hak Dilindungi</p>
-            </div>
-            <div class="flex gap-10">
-                <a href="#" class="text-xs font-black uppercase tracking-[0.2em] text-slate-800 hover:text-amber-600 transition-colors">Instagram</a>
-                <a href="#" class="text-xs font-black uppercase tracking-[0.2em] text-slate-800 hover:text-amber-600 transition-colors">Facebook</a>
-                <a href="#" class="text-xs font-black uppercase tracking-[0.2em] text-slate-800 hover:text-amber-600 transition-colors">TikTok</a>
+    <footer class="py-16 bg-[#3C2A21] text-[#E5D3C5]">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-10">
+                <div class="space-y-4 text-center lg:text-left">
+                    <div class="flex items-center justify-center lg:justify-start gap-2">
+                        <i data-lucide="coffee" class="w-6 h-6"></i>
+                        <span class="font-black text-2xl tracking-tighter italic">DOMINANCE</span>
+                    </div>
+                    <ul class="text-[10px] space-y-2 opacity-80 font-medium">
+                        <li class="flex items-center justify-center lg:justify-start gap-3"><i data-lucide="map-pin" class="w-3 h-3"></i> Address: Banjarejo, Taman, Madiun City, East Java 63137</li>
+                        <li class="flex items-center justify-center lg:justify-start gap-3"><i data-lucide="phone" class="w-3 h-3"></i> Phone: +62 855-5555-5555</li>
+                        <li class="flex items-center justify-center lg:justify-start gap-3"><i data-lucide="mail" class="w-3 h-3"></i> Email: dominancedesign@gmail.com</li>
+                        <li class="flex items-center justify-center lg:justify-start gap-3"><i data-lucide="clock" class="w-3 h-3"></i> Operating Hours: Monday - Sunday 10:00 am - 10:00 pm</li>
+                    </ul>
+                </div>
+                <div class="space-y-6 text-center lg:text-right">
+                    <p class="text-[10px] font-black uppercase tracking-widest italic opacity-50">Follow Us:</p>
+                    <div class="flex gap-4 justify-center lg:justify-end">
+                        <a href="#" class="bg-white/10 p-3 rounded-full hover:bg-white/20"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="bg-white/10 p-3 rounded-full hover:bg-white/20"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+                        <a href="#" class="bg-white/10 p-3 rounded-full hover:bg-white/20"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
@@ -245,29 +330,6 @@
     <script>
         // Inisialisasi Lucide Icons
         lucide.createIcons();
-
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.onscroll = () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('py-2', 'shadow-md');
-                navbar.classList.remove('py-4');
-            } else {
-                navbar.classList.remove('py-2', 'shadow-md');
-                navbar.classList.add('py-4');
-            }
-        };
-
-        // Mobile Menu Logic
-        const menuBtn = document.getElementById('menu-btn');
-        const closeBtn = document.getElementById('close-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuBtn.onclick = () => mobileMenu.classList.remove('hidden');
-        closeBtn.onclick = () => mobileMenu.classList.add('hidden');
-        mobileMenu.onclick = (e) => {
-            if (e.target.tagName === 'A') mobileMenu.classList.add('hidden');
-        };
     </script>
 </body>
 </html>
